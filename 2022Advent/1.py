@@ -1,6 +1,8 @@
-f = open("1input.txt", "r")
+f = open("inputs/1input.txt", "r")
+
 totals = []
 total = 0
+
 for line in f:
     if line != "\n":
         total += int(line)
@@ -8,6 +10,11 @@ for line in f:
         totals.append(total)
         total = 0
 f.close()
+
 totals.sort(reverse=True)
-print(totals[0:3])
+
+# Part 1: Elf with highest calories
+print(totals[0])
+
+# Part 2: Top 3 elves with highest calories
 print(sum(totals[0:3]))

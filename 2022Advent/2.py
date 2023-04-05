@@ -1,4 +1,5 @@
 f = open("2input.txt", "r")
+
 scores = {
     "A": 1,
     "B": 2,
