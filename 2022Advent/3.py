@@ -1,4 +1,4 @@
-f = open("3input.txt", "r")
+f = open("inputs/3input.txt", "r").read().splitlines()
 
 values = {
     "a": 1,
@@ -55,32 +55,32 @@ values = {
     "Z": 52,
 }
 
-total = 0
 
-for line in f:
-    line = str(line).strip()
-    first = set(list(line[:len(line) // 2]))
-    second = set(list(line[len(line) // 2:]))
+def part_one(lines):
+    # Get repeated value from both halves of string and return total sum of values
+    total = 0
+    for i in lines:
+        first = set(list(i[:len(i) // 2]))
+        second = set(list(i[len(i) // 2:]))
 
-    unique = min(first & second)
-    total += values[unique[0]]
+        repeated = min(first & second)
+        total += values[repeated[0]]
 
-print(total)
-f.close()
+    return total
 
-f = open("3input.txt", "r")
-total_1 = 0
-while True:
-    first = set(list(str(f.readline()).strip()))
-    if not first:
-        break
-    second = set(list(str(f.readline()).strip()))
-    third = set(list(str(f.readline()).strip()))
-    # print(first, second, third)
 
-    unique = min(first & second & third)
-    print(unique)
-    total_1 += values[unique]
+def part_two(lines):
+    # Get repeated value across groups of 3 strings and return total sum
+    total = 0
+    for i in range(0, len(lines), 3):
+        first = set(list(lines[i]))
+        second = set(list(lines[i + 1]))
+        third = set(list(lines[i + 2]))
+        repeated = min(first & second & third)
+        total += values[repeated]
 
-print(total_1)
-f.close()
+    return total
+
+
+print(part_one(f))
+print(part_two(f))

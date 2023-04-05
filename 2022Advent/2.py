@@ -48,6 +48,7 @@ def part_one(lines):
 
 
 def part_two(lines):
+    # Return points based on win and choice
     wins = {
         "A": "Y",
         "B": "Z",
